@@ -16,7 +16,6 @@ anim design_snackbar_out
 anim tooltip_enter
 anim tooltip_exit
 animator design_appbar_state_list_animator
-array labels_array
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -122,6 +121,7 @@ attr contentInsetStart
 attr contentInsetStartWithNavigation
 attr contentScrim
 attr controlBackground
+attr coordinatorLayoutStyle
 attr counterEnabled
 attr counterMaxLength
 attr counterOverflowTextAppearance
@@ -169,6 +169,7 @@ attr fontProviderFetchTimeout
 attr fontProviderPackage
 attr fontProviderQuery
 attr fontStyle
+attr fontVariationSettings
 attr fontWeight
 attr foregroundInsidePadding
 attr gapBetweenBars
@@ -395,6 +396,7 @@ attr tooltipText
 attr track
 attr trackTint
 attr trackTintMode
+attr ttcIndex
 attr useCompatPadding
 attr voiceIcon
 attr windowActionBar
@@ -589,6 +591,8 @@ dimen compat_button_inset_vertical_material
 dimen compat_button_padding_horizontal_material
 dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
+dimen compat_notification_large_icon_max_height
+dimen compat_notification_large_icon_max_width
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_text_size
@@ -629,6 +633,7 @@ dimen design_tab_text_size
 dimen design_tab_text_size_2line
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen fab_margin
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -657,6 +662,10 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen subtitle_corner_radius
+dimen subtitle_outline_width
+dimen subtitle_shadow_offset
+dimen subtitle_shadow_radius
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -758,6 +767,9 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable donut_circle
 drawable froyo_circle
+drawable ic_action_favourite
+drawable ic_action_order
+drawable ic_action_status
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_map
@@ -792,16 +804,19 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_contact
 id action_container
 id action_context_bar
 id action_divider
+id action_favorites
 id action_image
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_settings
+id action_order
+id action_status
 id action_text
 id actions
 id activity_chooser_view_content
@@ -833,6 +848,7 @@ id contentPanel
 id coordinator
 id custom
 id customPanel
+id date_button
 id decor_content_parent
 id default_activity_button
 id delivery_label
@@ -844,6 +860,7 @@ id design_navigation_view
 id disableHome
 id donut
 id donut_description
+id editText2
 id edit_query
 id end
 id end_padder
@@ -872,7 +889,6 @@ id image
 id info
 id italic
 id item_touch_helper_previous_elevation
-id label_spinner
 id largeLabel
 id left
 id line1
@@ -893,11 +909,9 @@ id nextday
 id none
 id normal
 id note_label
-id note_text
 id notification_background
 id notification_main_column
 id notification_main_column_container
-id order_textview
 id packed
 id parallax
 id parent
@@ -910,10 +924,11 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
+id radioGroup2
 id right
 id right_icon
 id right_side
-id sameday
+id sameDay
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -954,14 +969,17 @@ id status_bar_latest_event_content
 id submenuarrow
 id submit_area
 id tabMode
+id tag_transition_group
+id tag_unhandled_key_event_manager
+id tag_unhandled_key_listeners
 id text
 id text2
+id textIntro
 id textSpacerNoButtons
 id textSpacerNoTitle
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
-id textintro
 id time
 id title
 id titleDividerNoCustom
@@ -1091,32 +1109,44 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string action_contact
+string action_contact_message
+string action_favorites
+string action_favorites_message
+string action_order
+string action_order_message
 string action_settings
-string address_label_text
+string action_status
+string action_status_message
+string address
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
-string change_dessert
 string character_counter_pattern
 string choose_a_delivery_method
+string date
+string date_picker
 string donut_order_message
 string donuts
-string enter_address_hint
-string enter_name_hint
-string enter_note_hint
-string enter_phone_hint
+string droid_desserts
+string enter_address
+string enter_note
+string enter_phone_number
+string enter_your_name
 string froyo
 string froyo_order_message
+string hello_blank_fragment
 string ice_cream_order_message
 string ice_cream_sandwiches
-string intro_text
+string name
 string next_day_ground_delivery
-string order_label_text
+string note
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string phone
 string pick_up
 string same_day_messenger_service
 string search_menu_title
@@ -1519,6 +1549,7 @@ style Widget_Design_ScrimInsetsFrameLayout
 style Widget_Design_Snackbar
 style Widget_Design_TabLayout
 style Widget_Design_TextInputLayout
+style Widget_Support_CoordinatorLayout
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -1550,8 +1581,10 @@ styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color dra
 styleable FloatingActionButton backgroundTint backgroundTintMode borderWidth elevation fabSize pressedTranslationZ rippleColor useCompatPadding
 styleable FloatingActionButton_Behavior_Layout behavior_autoHide
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
-styleable FontFamilyFont font fontStyle fontWeight
+styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
+styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
+styleable GradientColorItem android_color android_offset
 styleable LinearConstraintLayout android_orientation
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
